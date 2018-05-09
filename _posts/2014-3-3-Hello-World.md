@@ -55,4 +55,41 @@ Opening the `Camera` application on windows pop this message:
 
 While the image we see on the Camera application display is black, so they must replace the stream that is getting from the Camera device itself to the application.
 
+
+Looking at strings I found some function names which led me to a function I named `getSystemRoutines`:
+
+```c
+PVOID getSystemRoutines()
+{
+  PVOID temp; // rax
+  UNICODE_STRING DestinationString; // [rsp+20h] [rbp-10h]
+  __int64 MajorVersion; // [rsp+40h] [rbp+10h]
+
+  LODWORD(MajorVersion) = 0;
+  RtlInitUnicodeString(&DestinationString, L"PsGetVersion");
+  krnPsGetVersion = MmGetSystemRoutineAddress(&DestinationString);
+  RtlInitUnicodeString(&DestinationString, L"WmiTraceMessage");
+  krnWmiTraceMessage = MmGetSystemRoutineAddress(&DestinationString);
+  RtlInitUnicodeString(&DestinationString, L"WmiQueryTraceInformation");
+  temp = MmGetSystemRoutineAddress(&DestinationString);
+  krnWmiQueryTraceInformation = temp;
+  mysteriousVarFromGetSystemsRoutine = 2;
+  if ( krnPsGetVersion )
+    temp = krnPsGetVersion(&MajorVersion, 0i64, 0i64, 0i64);
+  if ( MajorVersion >= 6 )
+  {
+    RtlInitUnicodeString(&DestinationString, L"EtwRegisterClassicProvider");
+    temp = MmGetSystemRoutineAddress(&DestinationString);
+    krnEtwRegisterClassicProvider = temp;
+    if ( temp )
+    {
+      RtlInitUnicodeString(&DestinationString, L"EtwUnregister");
+      temp = MmGetSystemRoutineAddress(&DestinationString);
+      mysteriousVarFromGetSystemsRoutine = 4;
+    }
+  }
+  return temp;
+}
+```
+
 The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
