@@ -112,4 +112,10 @@ PVOID WdmlibIointexInit()
 }
 ```
 
+So the call to `IoCreateDeviceSecure` probably creates the device that this drivers attaches as a filter to the other devices such as my webcam. Xrefing the function-pointer to `IoCreateDeviceSecure` leads to some information about the device it opens, I eventually traced the call to the function and ended up looking at `AddDevice` function: `DriverObject->DriverExtension->AddDevice = addDevice;` at `edevmon+0x54D0`.
+
+So this function is called whenever a device that's in this driver responsibility is attached, so there must be a call to `IoAttachDeviceToDeviceStack` somewhere down this path.
+
+
+
 The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
