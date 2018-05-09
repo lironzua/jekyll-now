@@ -39,7 +39,7 @@ HKLM, System\CurrentControlSet\Control\Class\{CA3E7AB9-B4C3-4AE6-8251-579EF93389
 ```
 
 I also noticed that this driver uses traditional filesystem minifilter api:
-![flt_imports]({{ site.baseurl }}/images/fflt_imports.png)
+![flt_imports]({{ site.baseurl }}/images/flt_imports.png)
 
 Looking at the drivers mounted to my webcam, I can also see it there:
 ![camera_filter]({{ site.baseurl }}/images/camera_filter.png)
