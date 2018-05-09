@@ -60,9 +60,9 @@ Looking at strings I found some function names which led me to a function I name
 ```c
 PVOID getSystemRoutines()
 {
-  PVOID temp; // rax
-  UNICODE_STRING DestinationString; // [rsp+20h] [rbp-10h]
-  __int64 MajorVersion; // [rsp+40h] [rbp+10h]
+  PVOID temp;
+  UNICODE_STRING DestinationString;
+  __int64 MajorVersion;
 
   LODWORD(MajorVersion) = 0;
   RtlInitUnicodeString(&DestinationString, L"PsGetVersion");
