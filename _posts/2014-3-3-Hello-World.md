@@ -55,7 +55,6 @@ Opening the `Camera` application on windows pop this message:
 
 While the image we see on the Camera application display is black, so they must replace the stream that is getting from the Camera device itself to the application.
 
-
 Looking at strings I found some function names which led me to a function I named `getSystemRoutines`:
 
 ```c
@@ -91,5 +90,6 @@ PVOID getSystemRoutines()
   return temp;
 }
 ```
+
 
 The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
