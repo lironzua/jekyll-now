@@ -92,4 +92,24 @@ PVOID getSystemRoutines()
 ```
 
 
+XRefing `MmGetSystemRoutineAddress` yields another interesting function:
+
+```c
+PVOID WdmlibIointexInit()
+{
+  PVOID result; // rax
+  UNICODE_STRING DestinationString; // [rsp+20h] [rbp-18h]
+
+  RtlInitUnicodeString(&DestinationString, L"IoCreateDeviceSecure");
+  krnIoCreateDeviceSecure = MmGetSystemRoutineAddress(&DestinationString);
+  if ( !krnIoCreateDeviceSecure )
+    krnIoCreateDeviceSecure = sub_FFFFF80B9BE42940;
+  RtlInitUnicodeString(&DestinationString, L"IoValidateDeviceIoControlAccess");
+  result = MmGetSystemRoutineAddress(&DestinationString);
+  krnIoValidateDeviceIoControlAccess = result;
+  byte_FFFFF80B9BE403D8 = 1;
+  return result;
+}
+```
+
 The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
