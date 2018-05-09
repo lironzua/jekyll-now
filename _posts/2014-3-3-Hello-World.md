@@ -35,7 +35,6 @@ HKLM, System\CurrentControlSet\Control\Class\{EEC5AD98-8080-425F-922A-DABF3DE3F6
 HKLM, System\CurrentControlSet\Control\Class\{CA3E7AB9-B4C3-4AE6-8251-579EF933890F}, UpperFilters, 0x00010008, %ServiceName%		; Camera
 ```
 
-
-![_config.yml]({{ site.baseurl }}/images/config.png)
+![_config.yml]({{ site.baseurl }}/images/fltmc_filters.png)
 
 The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
