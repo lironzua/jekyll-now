@@ -9,6 +9,9 @@ First thing I noticed after installing ESET Internel Security and running `fltmc
 `ServiceDescription = "Eset file on-access scanner"` for `eamonm`
 `ServiceDesc = "Eset device blocker"` for `edevmonm`
 
+![fltmc_filters]({{ site.baseurl }}/images/fltmc_filters.png)
+
+
 In this post (which will probably be in parts) I will try to review the `edevmonm` driver.
 
 I continued to look at the `edevmonm.inf` and found that it regiters itself as a filter driver for a number of device class GUIDs:
@@ -35,6 +38,21 @@ HKLM, System\CurrentControlSet\Control\Class\{EEC5AD98-8080-425F-922A-DABF3DE3F6
 HKLM, System\CurrentControlSet\Control\Class\{CA3E7AB9-B4C3-4AE6-8251-579EF933890F}, UpperFilters, 0x00010008, %ServiceName%		; Camera
 ```
 
-![_config.yml]({{ site.baseurl }}/images/fltmc_filters.png)
+I also noticed that this driver uses traditional filesystem minifilter api:
+![flt_imports]({{ site.baseurl }}/images/fflt_imports.png)
+
+Looking at the drivers mounted to my webcam, I can also see it there:
+![camera_filter]({{ site.baseurl }}/images/camera_filter.png)
+
+So this is quite weird; A file-system minifilter driver that is also mounted on other devices such as the Webcam? I had to dig deeper and understand this.
+
+ESET Internet Security has a webcam protection feature:
+![webcam_feature]({{ site.baseurl }}/images/webcam_feature.png)
+
+Opening the `Camera` application on windows pop this message:
+![webcam_attempt]({{ site.baseurl }}/images/webcam_attempt.png)
+
+
+While the image we see on the Camera application display is black, so they must replace the stream that is getting from the Camera device itself to the application.
 
 The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
