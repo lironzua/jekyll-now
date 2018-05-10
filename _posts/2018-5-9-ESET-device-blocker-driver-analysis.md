@@ -39,7 +39,9 @@ HKLM, System\CurrentControlSet\Control\Class\{CA3E7AB9-B4C3-4AE6-8251-579EF93389
 ```
 
 I also noticed that this driver uses traditional filesystem minifilter api:
-![flt_imports]({{ site.baseurl }}/images/flt_imports.png)
+<p align="center">
+  <img src="/images/flt_imports.png" height="50%" width="50%" />
+</p>
 
 Looking at the drivers mounted to my webcam, I can also see it there:
 <p align="center">
@@ -49,10 +51,14 @@ Looking at the drivers mounted to my webcam, I can also see it there:
 So this is quite weird for me; A file-system minifilter driver that is also mounted on other devices such as the Webcam? I had to dig deeper and understand this.
 
 ESET Internet Security has a webcam protection feature:
-![webcam_feature]({{ site.baseurl }}/images/webcam_feature.png)
+<p align="center">
+  <img src="/images/webcam_feature.png" height="50%" width="50%" />
+</p>
 
 Opening the `Camera` application on windows pop this message:
-![webcam_attempt]({{ site.baseurl }}/images/webcam_attempt.png)
+<p align="center">
+  <img src="/images/webcam_attempt.png" height="50%" width="50%" />
+</p>
 
 
 While the image we see on the Camera application display is black, so they must replace the stream that is getting from the Camera device itself to the application.
