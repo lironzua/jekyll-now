@@ -48,7 +48,7 @@ Looking at the drivers mounted to my webcam, I can also see it there:
   <img src="/images/camera_filter.png" height="50%" width="50%" />
 </p>
 
-So this is quite weird for me; A file-system minifilter driver that is also mounted on other devices such as the Webcam? I had to dig deeper and understand this.
+So this is quite weird; I've never seen a file-system minifilter driver that is also mounted on other devices such as the webcam, I had to dig deeper and understand this.
 
 ESET Internet Security has a webcam protection feature:
 <p align="center">
