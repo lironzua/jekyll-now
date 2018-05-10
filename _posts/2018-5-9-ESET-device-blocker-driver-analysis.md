@@ -5,7 +5,7 @@ title: A technical analysis of Eset device blocker driver
 
 Information Gathering
 
-First thing I noticed after installing ESET Internel Security and running `fltmc filters` on command line is that it installed 2 mini-filter drivers named `eamonm` and `edevmonm`, looking at their `.INF` files we can see a small description about them:
+First thing I noticed after installing ESET Internet Security and running `fltmc filters` on command line is that it installed 2 mini-filter drivers named `eamonm` and `edevmonm`, looking at their `.INF` files we can see a small description about them:
 `ServiceDescription = "Eset file on-access scanner"` for `eamonm`
 `ServiceDesc = "Eset device blocker"` for `edevmonm`
 
@@ -14,7 +14,7 @@ First thing I noticed after installing ESET Internel Security and running `fltmc
 
 In this post (which will probably be in parts) I will try to review the `edevmonm` driver.
 
-I continued to look at the `edevmonm.inf` and found that it regiters itself as a filter driver for a number of device class GUIDs:
+I continued to look at the `edevmonm.inf` and found that it registers itself as a filter driver for a number of device class GUIDs:
 
 ```
 [EDEVMON.ClassAddReg]
