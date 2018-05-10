@@ -44,7 +44,7 @@ I also noticed that this driver uses traditional filesystem minifilter api:
 Looking at the drivers mounted to my webcam, I can also see it there:
 ![camera_filter]({{ site.baseurl }}/images/camera_filter.png)
 
-So this is quite weird; A file-system minifilter driver that is also mounted on other devices such as the Webcam? I had to dig deeper and understand this.
+So this is quite weird for me; A file-system minifilter driver that is also mounted on other devices such as the Webcam? I had to dig deeper and understand this.
 
 ESET Internet Security has a webcam protection feature:
 ![webcam_feature]({{ site.baseurl }}/images/webcam_feature.png)
@@ -114,7 +114,8 @@ PVOID WdmlibIointexInit()
 
 So the call to `IoCreateDeviceSecure` probably creates the device that this drivers attaches as a filter to the other devices such as my webcam. Xrefing the function-pointer to `IoCreateDeviceSecure` leads to some information about the device it opens, I eventually traced the call to the function and ended up looking at `AddDevice` function: `DriverObject->DriverExtension->AddDevice = addDevice;` at `edevmon+0x54D0`.
 
-So this function is called whenever a device that's in this driver responsibility is attached, so there must be a call to `IoAttachDeviceToDeviceStack` somewhere down this path.
+The AddDevice function
+So this function is called whenever a device that's in this driver responsibility, so there must be a call to `IoAttachDeviceToDeviceStack` somewhere down this path.
 
 
 
