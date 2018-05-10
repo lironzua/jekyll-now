@@ -42,7 +42,7 @@ I also noticed that this driver uses traditional filesystem minifilter api:
 ![flt_imports]({{ site.baseurl }}/images/flt_imports.png)
 
 Looking at the drivers mounted to my webcam, I can also see it there:
-![camera_filter]({{ site.baseurl }}/images/camera_filter.png | width=100)
+![camera_filter]({{ site.baseurl }}/images/camera_filter.png){:height="50%" width="50%"}
 
 So this is quite weird for me; A file-system minifilter driver that is also mounted on other devices such as the Webcam? I had to dig deeper and understand this.
 
