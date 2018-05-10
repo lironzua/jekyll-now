@@ -43,6 +43,7 @@ I also noticed that this driver uses traditional filesystem minifilter api:
 
 Looking at the drivers mounted to my webcam, I can also see it there:
 <p align="center">
+  <img src="/images/camera_filter.png" height="50%" width="50%" />
 ![camera_filter]({{ site.baseurl }}/images/camera_filter.png){:height="50%" width="50%"}
 </p>
 
